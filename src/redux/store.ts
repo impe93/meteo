@@ -1,8 +1,11 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import { container } from '../services/ioc/ContainerContext';
+import { homeSliceReducer } from '../features/home/homeSlice'
 
 export const store = configureStore({
-  reducer: { },
+  reducer: {
+    homeSliceReducer
+  },
 });
 
 export type RootState = ReturnType<typeof store.getState>;
