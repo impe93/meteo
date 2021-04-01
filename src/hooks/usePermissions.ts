@@ -1,10 +1,5 @@
 import { useEffect, useState } from 'react';
 
-interface Position {
-  latitude: number;
-  longitude: number;
-}
-
 const usePermission = (name: PermissionName) => {
   const [permission, setPermission] = useState<PermissionState>('granted');
 
