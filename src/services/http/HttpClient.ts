@@ -1,5 +1,5 @@
-import axios, {AxiosInstance} from 'axios';
-import {container} from '../ioc/ContainerContext';
+import axios, { AxiosInstance } from 'axios';
+import { container } from '../ioc/ContainerContext';
 
 export const IHttpClientType = Symbol.for('IHttpClientType');
 
@@ -19,8 +19,11 @@ export class HttpClient implements IHttpClient {
     this.axiosInstance =
       axiosInstance ??
       axios.create({
-        baseURL: 'http://api.tvmaze.com',
+        baseURL: 'https://api.openweathermap.org/data/2.5',
         timeout: 10000,
+        params: {
+          appid: process.env.REACT_APP_OPEN_WEATHER_API_KEY,
+        },
       });
   }
 
