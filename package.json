@@ -12,6 +12,8 @@
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
     "@types/react-redux": "^7.1.7",
+    "axios": "^0.21.1",
+    "inversify": "^5.0.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons-weather": "^1.0.5",
@@ -42,6 +44,7 @@
     ]
   },
   "devDependencies": {
+    "@types/inversify": "^2.0.33",
     "@types/react-router-dom": "^5.1.7"
   }
 }
