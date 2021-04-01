@@ -4,13 +4,19 @@ import './index.css';
 import App from './App';
 import { store } from './redux/store';
 import { Provider } from 'react-redux';
+import {
+  container,
+  ContainerContext,
+} from '../src/services/ioc/ContainerContext';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <ContainerContext.Provider value={container}>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </ContainerContext.Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
