@@ -22,6 +22,8 @@ export class HttpClient implements IHttpClient {
         baseURL: 'https://api.openweathermap.org/data/2.5',
         timeout: 10000,
         params: {
+          lang: 'it',
+          units: 'metric',
           appid: process.env.REACT_APP_OPEN_WEATHER_API_KEY,
         },
       });
