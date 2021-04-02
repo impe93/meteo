@@ -1,10 +1,10 @@
 import React from 'react';
 import styleSheet from './home.module.css';
-import WeatherIcon from 'react-icons-weather';
 import { useSelector } from 'react-redux';
 import { selectIsLoading } from '../../components/Loader/loaderSlice';
 import { Loader } from '../../components/Loader/Loader';
 import { Weather } from './weather.models';
+import { WeatherPage } from './WeatherPage';
 import { selectLastUpdate, selectWeather } from './homeSlice';
 
 export const Home = () => {
@@ -16,36 +16,21 @@ export const Home = () => {
   const iconId = String(weather?.weather[0].id);
   const city = weather?.name;
   const weatherDescription = weather?.weather[0].description;
-  const date = lastUpdate?.toLocaleString();
+  const dateTime = lastUpdate?.toLocaleString();
 
-  return isLoading || !weather ? (
-    <Loader />
-  ) : (
+  return (
     <div className={styleSheet.Home}>
-      <div className={styleSheet.verticalContainer}>
-        <div className={styleSheet.horizontalContainer}>
-          <WeatherIcon
-            className={`${styleSheet.fontSize} ${styleSheet.shadow}`}
-            name='owm'
-            flip='horizontal'
-            iconId={iconId}
-          />
-          <div
-            className={`${styleSheet.fontSize} ${styleSheet.shadow} ${styleSheet.text}`}
-          >
-            {temperature}°C
-          </div>
-        </div>
-        <div className={`${styleSheet.shadow} ${styleSheet.description}`}>
-          Oggi a <b>{city}</b> c'è <b>{weatherDescription}</b>
-        </div>
-        <div className={`${styleSheet.shadow} ${styleSheet.update}`}>
-          Ultimo aggiornamento {date}
-        </div>
-        <div className={`${styleSheet.shadow} ${styleSheet.update}`}>
-          Powered by <b>Lorenzo Imperatrice</b>
-        </div>
-      </div>
+      {isLoading || !weather ? (
+        <Loader />
+      ) : (
+        <WeatherPage
+          city={city}
+          iconId={iconId}
+          dateTime={dateTime}
+          temperature={temperature}
+          weatherDescription={weatherDescription}
+        />
+      )}
     </div>
   );
 };
