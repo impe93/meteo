@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Weather } from './weather.models';
 import { IHttpClient } from '../../services/http/HttpClient';
 import { AppThunk, RootState } from '../../redux/store';
+import { hideLoader, showLoader } from '../../components/Loader/loaderSlice';
 
 export type HomeState = {
   weather: Weather | null;
@@ -41,12 +42,15 @@ export const getWeather = (
   httpClient: IHttpClient
 ): AppThunk => async (dispatch) => {
   try {
+    dispatch(showLoader());
     const weather: Weather = await httpClient.get<Weather>('/weather', {
       params: { q, lat, lon },
     });
     dispatch(setWeather(weather));
   } catch (e) {
     throw new Error(e);
+  } finally {
+    dispatch(hideLoader());
   }
 };
 
