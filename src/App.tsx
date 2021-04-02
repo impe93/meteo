@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import { Home } from './features/home/Home';
+import { Forecast } from './features/forecast/Forecast';
 import { usePermission } from './hooks/usePermissions';
 import { usePosition } from './hooks/usePosition';
 import { getWeather, setPosition } from './features/home/homeSlice';
@@ -24,10 +25,11 @@ function App() {
   return (
     <Router>
       <Switch>
+        <Route path="/forecast">
+          <Forecast />
+        </Route>
         <Route path="/">
           <Home />
-        </Route>
-        <Route path="/forecast">
         </Route>
         <Redirect to="/" />
       </Switch>
