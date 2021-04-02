@@ -7,8 +7,6 @@ import { Loader } from '../../components/Loader/Loader';
 import { Weather } from './weather.models';
 import { selectLastUpdate, selectWeather } from './homeSlice';
 
-type Props = {};
-
 export const Home = () => {
   const isLoading: boolean = useSelector(selectIsLoading);
   const weather: Weather = useSelector(selectWeather);
