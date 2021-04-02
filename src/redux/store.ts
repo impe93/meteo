@@ -8,6 +8,10 @@ export const store = configureStore({
     homeSliceReducer,
     loaderSliceReducer,
   },
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: {ignoredPaths: ['homeSliceReducer.lastUpdate']},
+    }),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
