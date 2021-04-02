@@ -1,44 +1,33 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+# Meteo
 
-## Available Scripts
+Quest'applicazione è stata realizzata per un processo di selezione presso una compagnia di Torino.
 
-In the project directory, you can run:
+L'applicazione ha il compito di mostrare il meteo e le previsioni della località in cui si è geolocalizzati.
 
-### `yarn start`
+L'applicazione utilizza le API di Open Weather Map ed utilizza il framework front-end ReactJS.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<img src="./readme-assets/screen-1.png" width="450">
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+<img src="./readme-assets/screen-2.png" width="450">
 
-### `yarn test`
+## Installazione
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Open Weather setup
 
-### `yarn build`
+Come prima cosa è necessario disporre di un API key di Open Weather, è totalmente gratuita creandosi un account a questo [link](https://home.openweathermap.org/users/sign_in).
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Dopo aver clonato il progetto bisogna creare il file `.env.local` nel quale si va a copiare l'API key di Open Weather utilizzando come variabile di ambiente `REACT_APP_OPEN_WEATHER_API_KEY`.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+il risultato finale dovrebbe essere:
+```
+REACT_APP_OPEN_WEATHER_API_KEY=<API_KEY>
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Installazione delle dipendenze
 
-### `yarn eject`
+Questo progetto utilizza Yarn come gestore di dipendenze. Per installarle basterà lanciare il comando:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+$ yarn
+```
+All'interno della cartella del progetto
