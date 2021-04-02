@@ -16,8 +16,7 @@ export const Home = () => {
   const iconId = String(weather?.weather[0].id);
   const city = weather?.name;
   const weatherDescription = weather?.weather[0].description;
-  const date = lastUpdate.toLocaleString();
-
+  const date = lastUpdate?.toLocaleString();
 
   return isLoading || !weather ? (
     <Loader />
