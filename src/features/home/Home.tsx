@@ -5,18 +5,20 @@ import { useSelector } from 'react-redux';
 import { selectIsLoading } from '../../components/Loader/loaderSlice';
 import { Loader } from '../../components/Loader/Loader';
 import { Weather } from './weather.models';
-import { selectWeather } from './homeSlice';
+import { selectLastUpdate, selectWeather } from './homeSlice';
 
 type Props = {};
 
 export const Home = () => {
   const isLoading: boolean = useSelector(selectIsLoading);
   const weather: Weather = useSelector(selectWeather);
+  const lastUpdate: Date = useSelector(selectLastUpdate);
 
-  const temperature = weather.main.temp.toFixed(0);
-  const iconId = String(weather.weather[0].id);
-  const city = weather.name;
-  const weatherDescription = weather.weather[0].description;
+  const temperature = weather?.main.temp.toFixed(0);
+  const iconId = String(weather?.weather[0].id);
+  const city = weather?.name;
+  const weatherDescription = weather?.weather[0].description;
+  const date = lastUpdate.toLocaleString();
 
 
   return isLoading || !weather ? (
@@ -41,7 +43,7 @@ export const Home = () => {
           Oggi a <b>{city}</b> c'è <b>{weatherDescription}</b>
         </div>
         <div className={`${styleSheet.shadow} ${styleSheet.update}`}>
-          Ultimo aggiornamento 24-10-2019, 11:31:29
+          Ultimo aggiornamento {date}
         </div>
         <div className={`${styleSheet.shadow} ${styleSheet.update}`}>
           Powered by <b>Lorenzo Imperatrice</b>
