@@ -46,6 +46,7 @@
   },
   "devDependencies": {
     "@types/inversify": "^2.0.33",
-    "@types/react-router-dom": "^5.1.7"
+    "@types/react-router-dom": "^5.1.7",
+    "ts-mockito": "^2.6.1"
   }
 }
