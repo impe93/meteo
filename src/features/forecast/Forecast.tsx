@@ -6,9 +6,9 @@ import { selectPosition } from '../home/homeSlice';
 import { getForecast, selectForecast } from './forecastSlice';
 import styleSheet from '../forecast/forecast.module.css';
 import { Drawer } from './Drawer';
-import WeatherIcon from 'react-icons-weather';
 import { selectIsLoading } from '../../components/Loader/loaderSlice';
 import { Loader } from '../../components/Loader/Loader';
+import { ForecastObject } from './ForecastObject';
 
 export const Forecast = () => {
   const dispatch = useDispatch();
@@ -29,29 +29,8 @@ export const Forecast = () => {
     <Drawer>
       <div className={styleSheet.title}>Previsioni</div>
       <div className={styleSheet.container}>
-        {forecast.list?.map((f) => {
-          const date = new Date(f.dt * 1000);
-
-          return (
-            <>
-              <div className={styleSheet.objContainer}>
-                <WeatherIcon
-                  className={styleSheet.icon}
-                  name='owm'
-                  flip='horizontal'
-                  iconId={f.weather[0].id}
-                />
-                <div className={styleSheet.description}>
-                  <div className={styleSheet.text}>
-                    {date.toLocaleDateString()} alle {date.toLocaleTimeString()}
-                  </div>
-                  <div className={styleSheet.text}>
-                    {f.weather[0].description}
-                  </div>
-                </div>
-              </div>
-            </>
-          );
+        {forecast.list?.map((f, i) => {
+          return <ForecastObject key={i} forecast={f} />
         })}
       </div>
     </Drawer>

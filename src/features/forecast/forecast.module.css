@@ -7,28 +7,6 @@
   padding-left: 24px;
 }
 
-.objContainer {
-  display: inline-flex;
-  padding: 16px;
-}
-
-.description {
-  display: inline-flex;
-  flex-direction: column;
-}
-
-.text {
-  padding: 16px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-}
-
-.icon {
-  font-size: 40px;
-  width: 60px;
-  height: 60px;
-}
-
 .title {
   padding-left: 24px;
   padding-top: calc(24px + 3vw);
