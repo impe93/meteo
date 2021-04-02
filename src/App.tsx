@@ -16,7 +16,7 @@ import { IHttpClient, IHttpClientType } from './services/http/HttpClient';
 import { AnimatePresence } from 'framer-motion';
 
 function App() {
-  usePermission('geolocation');
+  const permission = usePermission('geolocation');
   const dispatch = useDispatch();
   const position = usePosition();
   const httpClient = useDependency<IHttpClient>(IHttpClientType);
@@ -26,7 +26,7 @@ function App() {
     if (position) {
       dispatch(getWeather(position, httpClient));
     }
-  }, [position, httpClient, dispatch]);
+  }, [position, httpClient, dispatch, permission]);
 
   return (
     <AnimatePresence>
