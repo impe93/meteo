@@ -38,7 +38,9 @@ function App() {
           <Route path='/'>
             <Home />
           </Route>
-          <Redirect to='/' />
+          <Route path='*' >
+            <Redirect to={{ pathname: '/' }} />
+          </Route>
         </Switch>
       </Router>
     </AnimatePresence>
