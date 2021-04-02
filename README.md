@@ -6,9 +6,9 @@ L'applicazione ha il compito di mostrare il meteo e le previsioni della localit√
 
 L'applicazione utilizza le API di Open Weather Map ed utilizza il framework front-end ReactJS.
 
-<img src="./readme-assets/screen-1.png" width="450">
+<img src="./readme-assets/screen-1.png">
 
-<img src="./readme-assets/screen-2.png" width="450">
+<img src="./readme-assets/screen-2.png">
 
 ## Installazione
 
