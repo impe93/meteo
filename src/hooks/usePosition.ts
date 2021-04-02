@@ -1,9 +1,5 @@
 import { useState, useEffect } from 'react';
-
-type Position = {
-  latitude: number;
-  longitude: number;
-};
+import { Position } from '../features/home/homeSlice';
 
 export const usePosition = (): Position => {
   const [position, setPosition] = useState<Position | undefined>(undefined);
@@ -11,10 +7,10 @@ export const usePosition = (): Position => {
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       ({ coords: { latitude, longitude } }) => {
-        setPosition({ latitude, longitude });
+        setPosition({ lat: latitude, lon: longitude });
       },
       () => {
-        console.log('Position Error')
+        console.log('Position Error');
       },
       {
         maximumAge: 0,
@@ -24,5 +20,5 @@ export const usePosition = (): Position => {
     );
   }, []);
 
-  return { ...position };
+  return position ?? null;
 };
