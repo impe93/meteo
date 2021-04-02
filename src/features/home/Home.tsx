@@ -6,6 +6,8 @@ import { Loader } from '../../components/Loader/Loader';
 import { Weather } from './weather.models';
 import { WeatherPage } from './WeatherPage';
 import { selectLastUpdate, selectWeather } from './homeSlice';
+import { Link } from 'react-router-dom';
+import DragIcon from '../../assets/images/drag-icon.svg';
 
 export const Home = () => {
   const isLoading: boolean = useSelector(selectIsLoading);
@@ -23,13 +25,20 @@ export const Home = () => {
       {isLoading || !weather ? (
         <Loader />
       ) : (
-        <WeatherPage
-          city={city}
-          iconId={iconId}
-          dateTime={dateTime}
-          temperature={temperature}
-          weatherDescription={weatherDescription}
-        />
+        <>
+          <div className={styleSheet.drawer}>
+            <Link to='/forecast'>
+              <img src={DragIcon} alt='Drag icon' />
+            </Link>
+          </div>
+          <WeatherPage
+            city={city}
+            iconId={iconId}
+            dateTime={dateTime}
+            temperature={temperature}
+            weatherDescription={weatherDescription}
+          />
+        </>
       )}
     </div>
   );
