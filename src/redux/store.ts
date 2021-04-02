@@ -2,11 +2,13 @@ import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import { container } from '../services/ioc/ContainerContext';
 import { homeSliceReducer } from '../features/home/homeSlice'
 import { loaderSliceReducer } from '../components/Loader/loaderSlice';
+import { forecastSliceReducer } from '../features/forecast/forecastSlice';
 
 export const store = configureStore({
   reducer: {
     homeSliceReducer,
     loaderSliceReducer,
+    forecastSliceReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
