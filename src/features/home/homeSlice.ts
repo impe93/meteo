@@ -6,10 +6,19 @@ import { hideLoader, showLoader } from '../../components/Loader/loaderSlice';
 
 export type HomeState = {
   weather: Weather | null;
+  position: Position | null;
+  lastUpdate: Date | null;
+};
+
+export type Position = {
+  lat: number;
+  lon: number;
 };
 
 const initialState: HomeState = {
   weather: null,
+  position: null,
+  lastUpdate: null,
 };
 
 const TODAY_METEO_SLICE_NAME: string = 'todayMeteoSlice';
@@ -19,6 +28,14 @@ export const setWeatherHandler = (
   action: PayloadAction<Weather>
 ) => {
   state.weather = action.payload;
+  state.lastUpdate = new Date();
+};
+
+export const setPositionHandler = (
+  state: HomeState,
+  action: PayloadAction<Position>
+) => {
+  state.position = action.payload;
 };
 
 export const homeSlice = createSlice({
@@ -26,10 +43,11 @@ export const homeSlice = createSlice({
   initialState,
   reducers: {
     setWeather: setWeatherHandler,
+    setPosition: setPositionHandler,
   },
 });
 
-export const { setWeather } = homeSlice.actions;
+export const { setWeather, setPosition } = homeSlice.actions;
 
 export type WeatherApiSettings = {
   q?: string;
@@ -38,13 +56,13 @@ export type WeatherApiSettings = {
 };
 
 export const getWeather = (
-  { q, lat, lon }: WeatherApiSettings,
+  settings: WeatherApiSettings,
   httpClient: IHttpClient
 ): AppThunk => async (dispatch) => {
   try {
     dispatch(showLoader());
     const weather: Weather = await httpClient.get<Weather>('/weather', {
-      params: { q, lat, lon },
+      params: { q: settings.q, lat: settings.lat, lon: settings.lon },
     });
     dispatch(setWeather(weather));
   } catch (e) {
@@ -56,5 +74,11 @@ export const getWeather = (
 
 export const selectWeather = (state: RootState) =>
   state.homeSliceReducer.weather;
+
+export const selectPosition = (state: RootState) =>
+  state.homeSliceReducer.position;
+
+export const selectLastUpdate = (state: RootState) =>
+  state.homeSliceReducer.lastUpdate;
 
 export const homeSliceReducer = homeSlice.reducer;
