@@ -11,22 +11,30 @@ const initialState: LoaderState = {
 
 const LOADER_SLICE_NAME: string = 'todayMeteoSlice';
 
-export const setIsLoadingHandler = (
+export const hideLoaderHandler = (
   state: LoaderState,
   action: PayloadAction<boolean>
 ) => {
-  state.isLoading = action.payload;
+  state.isLoading = false;
+};
+
+export const showLoaderHandler = (
+  state: LoaderState,
+  action: PayloadAction<boolean>
+) => {
+  state.isLoading = true;
 };
 
 export const loaderSlice = createSlice({
   name: LOADER_SLICE_NAME,
   initialState,
   reducers: {
-    setIsLoading: setIsLoadingHandler,
+    hideLoader: hideLoaderHandler,
+    showLoader: showLoaderHandler,
   },
 });
 
-export const { setIsLoading } = loaderSlice.actions;
+export const { hideLoader, showLoader } = loaderSlice.actions;
 
 export const selectIsLoading = (state: RootState) =>
   state.loaderSliceReducer.isLoading;
